@@ -14,9 +14,10 @@ services:
       - .:/app
     env_file:
       - .env
+    # NOTE: Don't use runserver in production! Use a production-ready server like gunicorn or uwsgi.
     command: >
       sh -c "python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+             gunicorn leads_project.wsgi:application --bind 0.0.0.0:8000"
 
   db:
     image: postgres:15
