@@ -82,7 +82,7 @@ docker-compose exec web python manage.py createsuperuser
 ### Public Endpoints
 
 #### Create Lead
-```http
+```
 POST /api/leads/
 Content-Type: multipart/form-data
 
