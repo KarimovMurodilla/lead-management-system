@@ -1,6 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -38,7 +39,7 @@ class UserRegistrationView(generics.CreateAPIView):
     def perform_create(self, serializer):
         # Only staff users can create new accounts
         if not self.request.user.is_staff:
-            raise PermissionError("Only staff members can create new accounts")
+            raise PermissionDenied("Only staff members can create new accounts")
         
         user = serializer.save()
         user.is_staff = True  # Make new users staff by default

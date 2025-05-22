@@ -77,6 +77,11 @@ docker-compose exec web python manage.py createsuperuser
 - API Base URL: `http://localhost:8000/api/`
 - Admin Panel: `http://localhost:8000/admin/`
 
+6. **Run tests**
+```bash
+docker-compose exec web python manage.py test
+```
+
 ## API Documentation
 
 ### Public Endpoints
